@@ -10,8 +10,8 @@ object AppStrings {
 
     private val strings = mapOf(
         // App Identity & Taglines
-        "app_title" to Pair("TEAM RATHORE", "TEAM RATHORE"),
-        "app_tagline" to Pair("साथ • सेवा • समर्पण • संगठन", "Together • Service • Dedication • Organization"),
+        "app_title" to Pair("आपका विश्वास", "AAPKA VISHWAS"),
+        "app_tagline" to Pair("सदैव आपके साथ", "Sadaiv Aapke Saath"),
         "app_subtagline" to Pair("जनसेवा ही हमारा संकल्प • भारतीय राष्ट्रीय कांग्रेस", "Public Service is Our Resolve • INC"),
         "app_slogan" to Pair("हाथ से हाथ जोड़ो, संगठन को मजबूत करो", "Join Hands, Strengthen the Organization"),
 

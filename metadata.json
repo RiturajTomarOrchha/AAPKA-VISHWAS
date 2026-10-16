@@ -1,6 +1,6 @@
 {
-  "name": "TEAM RATHORE",
-  "description": "Political communication, content creation, war room, and direct citizen connect app for Team Rathore.",
+  "name": "AAPKA VISHWAS",
+  "description": "Political communication, content creation, war room, and direct citizen connect portal for Aapka Vishwas - Sadaiv Aapke Saath.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

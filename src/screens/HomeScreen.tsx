@@ -38,7 +38,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   };
 
   const handleShare = (item: FeedItem) => {
-    const text = `${item.titleHi}\n\n${item.captionHi}\n\n🔗 टीम राठौर आधिकारिक वेब पोर्टल: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS\n#TeamRathore #AapkaVishwas`;
+    const text = `${item.titleHi}\n\n${item.captionHi}\n\n🔗 आपका विश्वास • सदैव आपके साथ आधिकारिक वेब पोर्टल: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS\n#AapkaVishwas #SadaivAapkeSaath`;
     if (navigator.share) {
       navigator.share({
         title: item.titleHi,
@@ -98,7 +98,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             <div>
               <div className="flex items-center space-x-2">
                 <span className="text-xs font-bold text-white">
-                  टीम राठौर ऐप अपने फोन या पीसी की होम स्क्रीन पर जोड़ें
+                  'आपका विश्वास' ऐप अपने फोन या पीसी की होम स्क्रीन पर जोड़ें
                 </span>
                 <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
                   APK उपलब्ध
@@ -145,7 +145,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
               </div>
 
               <p className="mt-2 text-xs sm:text-sm text-orange-100 max-w-xl leading-relaxed">
-                टीम राठौर के आधिकारिक डिजिटल मंच पर आपका स्वागत है। यहाँ से आप 4:5 HD डिजिटल पोस्टर बना सकते हैं, बूथ वॉर रूम में जुड़ सकते हैं और जनसंपर्क अभियान को गति दे सकते हैं।
+                'आपका विश्वास • सदैव आपके साथ' के आधिकारिक डिजिटल मंच पर आपका स्वागत है। यहाँ से आप 4:5 HD डिजिटल पोस्टर बना सकते हैं, बूथ वॉर रूम में जुड़ सकते हैं और जनसंपर्क अभियान को गति दे सकते हैं।
               </p>
 
               <div className="mt-5 flex flex-wrap gap-2.5 sm:gap-3">
@@ -372,8 +372,8 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   </button>
 
                   <a
-                    href="/TeamRathore.apk"
-                    download="TeamRathore_Official.apk"
+                    href="/AapkaVishwas.apk"
+                    download="AapkaVishwas_Official.apk"
                     className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center space-x-2 border border-slate-700 transition-colors"
                   >
                     <Download className="w-3.5 h-3.5 text-emerald-400" />

@@ -16,7 +16,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
   const [zoomLevel, setZoomLevel] = useState<number>(100);
 
   const [headline, setHeadline] = useState("आपका विश्वास • सदैव आपके साथ");
-  const [subHeadline, setSubHeadline] = useState("जनता का साथ, हर समय आपके साथ • टीम राठौर");
+  const [subHeadline, setSubHeadline] = useState("जनता का साथ, हर समय आपके साथ");
   const [showPhoto, setShowPhoto] = useState(true);
   const [showMobile, setShowMobile] = useState(true);
   const [showLeaderBadge, setShowLeaderBadge] = useState(true);
@@ -82,7 +82,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     ctx.fillStyle = radial;
     ctx.fillRect(0, 0, width, height);
 
-    // 2. Top Header Ribbon (Team Rathore Banner)
+    // 2. Top Header Ribbon (Aapka Vishwas Banner)
     ctx.fillStyle = 'rgba(15, 23, 42, 0.90)';
     ctx.fillRect(40, 40, width - 80, 110);
     ctx.strokeStyle = template.accentColor || '#f97316';
@@ -93,7 +93,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 36px "Noto Sans Devanagari", sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('टीम राठौर • जनसेवा ही संकल्प', width / 2, 92);
+    ctx.fillText('आपका विश्वास • सदैव आपके साथ', width / 2, 92);
 
     ctx.fillStyle = template.accentColor || '#f97316';
     ctx.font = '600 22px "Noto Sans Devanagari", sans-serif';
@@ -159,7 +159,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
 
       ctx.fillStyle = '#94a3b8';
       ctx.font = '500 22px "Noto Sans Devanagari", sans-serif';
-      ctx.fillText('— हेमंत राठौर (अध्यक्ष, टीम राठौर)', width / 2, quoteY + 235);
+      ctx.fillText('— हेमंत राठौर (जनसेवक)', width / 2, quoteY + 235);
     }
 
     // 5. Lower Footer Banner: User Identity Strip
@@ -221,7 +221,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     if (showMobile) {
       ctx.fillStyle = '#94a3b8';
       ctx.font = '500 24px "Poppins", sans-serif';
-      ctx.fillText(`📱 मो. ${mobile} • टीम राठौर`, 280, footerY + 172);
+      ctx.fillText(`📱 मो. ${mobile}`, 280, footerY + 172);
     }
 
   }, [selectedTemplateIndex, headline, subHeadline, showPhoto, showMobile, showLeaderBadge, leaderImg, userName, designation, mobile, userPhoto, template, aspectRatio]);
@@ -254,7 +254,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
 
   const shareToWhatsApp = () => {
     const text = encodeURIComponent(
-      `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 टीम राठौर वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
+      `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 आधिकारिक वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };

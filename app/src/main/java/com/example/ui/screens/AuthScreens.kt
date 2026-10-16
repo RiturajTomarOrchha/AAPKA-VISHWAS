@@ -844,9 +844,9 @@ fun RoleSelectionScreen(
                 Column(modifier = Modifier.weight(1f)) {
                     Text(
                         text = if (language == Language.HINDI)
-                            "टीम राठौर ऐप क्या है? (उद्देश्य व जानकारी)"
+                            "आपका विश्वास ऐप क्या है? (उद्देश्य व जानकारी)"
                         else
-                            "What is Team Rathore App? (Purpose & Info)",
+                            "What is Aapka Vishwas App? (Purpose & Info)",
                         style = MaterialTheme.typography.titleSmall.copy(fontWeight = FontWeight.Bold),
                         color = Color(0xFF0F172A)
                     )
@@ -928,7 +928,7 @@ fun RoleSelectionScreen(
         Spacer(modifier = Modifier.height(30.dp))
     }
 
-    // Team Rathore Info Popup Dialog
+    // Aapka Vishwas Info Popup Dialog
     if (showInfoDialog) {
         AlertDialog(
             onDismissRequest = { showInfoDialog = false },
@@ -937,7 +937,7 @@ fun RoleSelectionScreen(
                     Icon(Icons.Default.VolunteerActivism, contentDescription = null, tint = RathoreGreen)
                     Spacer(modifier = Modifier.width(8.dp))
                     Text(
-                        text = if (language == Language.HINDI) "टीम राठौर डिजिटल मंच — परिचय" else "About Team Rathore App",
+                        text = if (language == Language.HINDI) "आपका विश्वास डिजिटल मंच — परिचय" else "About Aapka Vishwas App",
                         style = MaterialTheme.typography.titleMedium.copy(fontWeight = FontWeight.Bold)
                     )
                 }

@@ -1509,7 +1509,7 @@ class AppViewModel : ViewModel() {
             likesCount = "1.5K",
             commentsCount = "48",
             sharesCount = "92",
-            facebookAuthor = if (author.isNotBlank()) author else "Team Rathore Official",
+            facebookAuthor = if (author.isNotBlank()) author else "Aapka Vishwas Official",
             facebookTimeHi = "अभी-अभी",
             facebookContentHi = content,
             facebookUrl = if (url.isNotBlank()) url else "https://www.facebook.com",

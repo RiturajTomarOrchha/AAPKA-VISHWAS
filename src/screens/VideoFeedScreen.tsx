@@ -15,7 +15,7 @@ export const VideoFeedScreen: React.FC<VideoFeedProps> = ({ videos }) => {
   };
 
   const handleShare = (v: VideoFeedItem) => {
-    const text = `🎬 ${v.titleHi}\n\n${v.captionHi}\n\nटीम राठौर वीडियो गैलरी: https://ais-pre-4e6xqjiicgx6hix4eeszuh-496088405107.asia-southeast1.run.app`;
+    const text = `🎬 ${v.titleHi}\n\n${v.captionHi}\n\n'आपका विश्वास' वीडियो गैलरी: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`;
     if (navigator.share) {
       navigator.share({ title: v.titleHi, text }).catch(() => {});
     } else {
@@ -87,7 +87,7 @@ export const VideoFeedScreen: React.FC<VideoFeedProps> = ({ videos }) => {
 
                 {/* Jacket Bottom Footer Strip */}
                 <div className="absolute bottom-0 inset-x-0 z-20 bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent p-3 pt-6 flex items-center justify-between text-xs text-slate-300">
-                  <span className="font-semibold text-white">#TeamRathore • जन-जन की आवाज</span>
+                  <span className="font-semibold text-white">#AapkaVishwas • सदैव आपके साथ</span>
                 </div>
               </div>
 
@@ -166,7 +166,7 @@ export const VideoFeedScreen: React.FC<VideoFeedProps> = ({ videos }) => {
                   <Play className="w-8 h-8 fill-white ml-1" />
                 </div>
                 <div className="text-white font-bold text-sm">
-                  वीडियो लाइव स्ट्रीम • टीम राठौर मीडिया सर्वर
+                  वीडियो लाइव स्ट्रीम • आधिकारिक मीडिया सर्वर
                 </div>
                 <p className="text-xs text-slate-300 max-w-md">
                   {activeVideo.captionHi}

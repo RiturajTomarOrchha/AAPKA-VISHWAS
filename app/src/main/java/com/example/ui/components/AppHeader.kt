@@ -52,7 +52,7 @@ fun AppHeader(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            // Left: Team Rathore Official Congress Emblem, Brand & Tagline
+            // Left: Aapka Vishwas Official Emblem, Brand & Tagline
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.spacedBy(10.dp)
@@ -62,7 +62,7 @@ fun AppHeader(
                 Column {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = if (language == Language.HINDI) "टीम राठौर" else "TEAM RATHORE",
+                            text = if (language == Language.HINDI) "आपका विश्वास" else "AAPKA VISHWAS",
                             style = MaterialTheme.typography.titleMedium.copy(
                                 fontWeight = FontWeight.Black,
                                 fontSize = 19.sp,
@@ -97,7 +97,7 @@ fun AppHeader(
                         }
                     }
                     Text(
-                        text = if (language == Language.HINDI) "साथ • सेवा • समर्पण • संगठन" else "Together • Service • Dedication • Organization",
+                        text = if (language == Language.HINDI) "सदैव आपके साथ" else "Sadaiv Aapke Saath",
                         style = MaterialTheme.typography.labelSmall.copy(
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Bold

@@ -49,7 +49,7 @@ export const Header: React.FC<HeaderProps> = ({
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-slate-400 truncate">
-              हेमंत राठौर • टीम राठौर • {user.assembly || 'ग्वालियर विधानसभा (17)'}
+              {user.assembly || 'ग्वालियर विधानसभा (17)'} • सदैव आपके साथ
             </p>
           </div>
         </div>

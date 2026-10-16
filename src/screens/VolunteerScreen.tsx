@@ -45,7 +45,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
             </span>
           </h2>
           <p className="text-xs text-slate-400 mt-1">
-            टीम राठौर का आधिकारिक डिजिटल पहचान पत्र (I-Card) एवं फील्ड टास्क बोर्ड
+            'आपका विश्वास' आधिकारिक डिजिटल पहचान पत्र (I-Card) एवं फील्ड टास्क बोर्ड
           </p>
         </div>
 
@@ -76,7 +76,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
                   className="w-10 h-10 rounded-xl object-cover ring-1 ring-orange-500/60 shadow shrink-0"
                 />
                 <div>
-                  <h4 className="text-xs font-bold text-white tracking-wide">आपका विश्वास • टीम राठौर</h4>
+                  <h4 className="text-xs font-bold text-white tracking-wide">आपका विश्वास</h4>
                   <p className="text-[9px] text-amber-400 font-semibold">सदैव आपके साथ • आधिकारिक पहचान पत्र</p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
               <div className="space-y-1">
                 <div className="text-base font-extrabold text-white">{user.fullName || 'रितुराज तोमर'}</div>
                 <div className="text-xs font-bold text-orange-400">{user.designation || 'सक्रिय कार्यकर्ता'}</div>
-                <div className="text-[10px] text-slate-300">सदस्यता क्र: <strong>TR-MP-2026-0842</strong></div>
+                <div className="text-[10px] text-slate-300">सदस्यता क्र: <strong>AV-MP-2026-0842</strong></div>
                 <div className="text-[10px] text-slate-400">विधानसभा: <strong>{user.assembly || 'ग्वालियर'}</strong></div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
 
               <div className="text-right">
                 <div className="text-[11px] font-bold text-white">हेमंत राठौर</div>
-                <div className="text-[9px] text-orange-400 font-medium">अध्यक्ष, टीम राठौर</div>
+                <div className="text-[9px] text-orange-400 font-medium">मुख्य समन्वयक</div>
               </div>
             </div>
 

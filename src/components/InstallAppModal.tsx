@@ -56,8 +56,8 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
   const handleDownloadApk = () => {
     setDownloadingApk(true);
     const link = document.createElement('a');
-    link.href = '/TeamRathore.apk';
-    link.download = 'TeamRathore_Official.apk';
+    link.href = '/AapkaVishwas.apk';
+    link.download = 'AapkaVishwas_Official.apk';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -181,7 +181,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
         {/* Security badge */}
         <div className="mt-4 flex items-center justify-center space-x-1.5 text-[11px] text-slate-400">
           <ShieldCheck className="w-4 h-4 text-emerald-400" />
-          <span>100% सुरक्षित • आधिकारिक टीम राठौर सर्वर द्वारा सत्यापित</span>
+          <span>100% सुरक्षित • आधिकारिक 'आपका विश्वास' सर्वर द्वारा सत्यापित</span>
         </div>
 
       </div>

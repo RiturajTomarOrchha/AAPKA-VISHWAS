@@ -1,5 +1,5 @@
-// Service Worker for Team Rathore PWA Web Application
-const CACHE_NAME = 'team-rathore-v1';
+// Service Worker for Aapka Vishwas PWA Web Application
+const CACHE_NAME = 'aapka-vishwas-v2';
 const ASSETS_TO_CACHE = [
   '/',
   '/index.html',

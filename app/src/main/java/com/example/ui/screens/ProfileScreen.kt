@@ -1056,7 +1056,7 @@ fun ProfileScreen(
                 Divider(color = BorderStroke, thickness = 0.6.dp)
 
                 MenuItem(
-                    title = if (language == Language.HINDI) "टीम राठौर ऐप के बारे में (About App)" else "About Team Rathore App",
+                    title = if (language == Language.HINDI) "आपका विश्वास ऐप के बारे में (About App)" else "About Aapka Vishwas App",
                     icon = Icons.Default.Info,
                     onClick = { showAboutAppDialog = true }
                 )
@@ -1787,7 +1787,7 @@ fun ProfileScreen(
         )
     }
 
-    // About Team Rathore App Dialog
+    // About Aapka Vishwas App Dialog
     if (showAboutAppDialog) {
         AlertDialog(
             onDismissRequest = { showAboutAppDialog = false },
@@ -1795,7 +1795,7 @@ fun ProfileScreen(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     TeamRathoreLogoIcon(size = 32.dp)
                     Spacer(modifier = Modifier.width(10.dp))
-                    Text("टीम राठौर", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
+                    Text("आपका विश्वास", fontWeight = FontWeight.Bold, style = MaterialTheme.typography.titleMedium)
                 }
             },
             text = {

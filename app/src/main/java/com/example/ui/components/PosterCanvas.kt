@@ -877,7 +877,7 @@ fun DefaultClassicHeaderView(modifier: Modifier = Modifier) {
         ) {
             Column {
                 Text(
-                    text = "TEAM RATHORE",
+                    text = "आपका विश्वास",
                     color = Color.White,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Black,
@@ -886,7 +886,7 @@ fun DefaultClassicHeaderView(modifier: Modifier = Modifier) {
                     )
                 )
                 Text(
-                    text = "साथ • सेवा • संगठन",
+                    text = "सदैव आपके साथ",
                     color = Color.White.copy(alpha = 0.85f),
                     style = MaterialTheme.typography.labelSmall.copy(
                         fontSize = 9.5.sp,

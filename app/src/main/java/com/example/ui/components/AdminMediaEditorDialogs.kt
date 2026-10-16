@@ -1942,7 +1942,7 @@ fun LiveTemplateGraphicOverlay(
                         Row(verticalAlignment = Alignment.CenterVertically) {
                             Icon(Icons.Default.Verified, contentDescription = null, tint = Color.White, modifier = Modifier.size(12.dp))
                             Spacer(modifier = Modifier.width(4.dp))
-                            Text("TEAM RATHORE", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 9.5.sp)
+                            Text("AAPKA VISHWAS", color = Color.White, fontWeight = FontWeight.Bold, fontSize = 9.5.sp)
                         }
                         Surface(shape = RoundedCornerShape(3.dp), color = Color.White) {
                             Text(badge, color = RathoreOrange, fontWeight = FontWeight.Bold, fontSize = 8.sp, modifier = Modifier.padding(horizontal = 4.dp, vertical = 1.dp))

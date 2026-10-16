@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "TEAM RATHORE"
+rootProject.name = "AAPKA VISHWAS"
 
 include(":app")

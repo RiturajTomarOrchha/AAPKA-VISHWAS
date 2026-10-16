@@ -19,7 +19,7 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
   const [fullName, setFullName] = useState(currentUser.fullName || '');
   const [mobile, setMobile] = useState(currentUser.mobile || '');
   const [assembly, setAssembly] = useState(currentUser.assembly || 'ग्वालियर दक्षिण (17)');
-  const [designation, setDesignation] = useState(currentUser.designation || 'सक्रिय कार्यकर्ता • टीम राठौर');
+  const [designation, setDesignation] = useState(currentUser.designation || 'सक्रिय कार्यकर्ता');
   const [photoPreview, setPhotoPreview] = useState<string | null>(currentUser.customPhotoUri || null);
 
   if (!isOpen) return null;
@@ -96,7 +96,7 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
         </div>
 
         <p className="text-xs text-slate-300 mb-5 leading-relaxed">
-          टीम राठौर के डिजिटल मंच से जुड़ें। साइन अप पूर्ण होते ही आपको आपका आधिकारिक पहचान पत्र (I-Card) व ऐप इंस्टॉल विकल्प प्राप्त होगा।
+          'आपका विश्वास • सदैव आपके साथ' डिजिटल मंच से जुड़ें। साइन अप पूर्ण होते ही आपको आपका आधिकारिक पहचान पत्र (I-Card) व ऐप इंस्टॉल विकल्प प्राप्त होगा।
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
