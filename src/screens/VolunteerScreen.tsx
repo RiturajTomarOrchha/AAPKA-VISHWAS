@@ -30,10 +30,24 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
     );
   };
 
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
+
   const totalPoints = tasks.filter(t => t.done).reduce((acc, t) => acc + t.points, 0) + 420;
 
+  const handleDownloadCard = () => {
+    confetti({ particleCount: 70, spread: 60 });
+    setToastMessage('डिजिटल I-Card डाउनलोड प्रारंभ हुआ!');
+    setTimeout(() => setToastMessage(null), 3000);
+  };
+
   return (
-    <div className="space-y-6 pb-20 md:pb-6">
+    <div className="space-y-6 pb-20 md:pb-6 relative">
+      {toastMessage && (
+        <div className="fixed bottom-20 right-6 z-50 bg-emerald-600 text-white px-4 py-2.5 rounded-xl shadow-2xl font-bold text-xs flex items-center space-x-2 animate-bounce">
+          <span>✓</span>
+          <span>{toastMessage}</span>
+        </div>
+      )}
       
       {/* Title */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
@@ -146,10 +160,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
           </div>
 
           <button
-            onClick={() => {
-              confetti({ particleCount: 70, spread: 60 });
-              alert('डिजिटल I-Card डाउनलोड प्रारंभ हुआ!');
-            }}
+            onClick={handleDownloadCard}
             className="mt-4 px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-xs border border-slate-700 flex items-center space-x-2 shadow-lg"
           >
             <Download className="w-4 h-4 text-orange-400" />

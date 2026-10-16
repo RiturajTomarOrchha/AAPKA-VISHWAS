@@ -111,6 +111,8 @@ export interface ImportantNotice {
   id: string;
   titleHi: string;
   titleEn: string;
+  departmentHi?: string;
+  departmentEn?: string;
   dateHi: string;
   dateEn: string;
   bodyHi: string;

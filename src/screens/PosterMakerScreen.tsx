@@ -256,7 +256,11 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     const text = encodeURIComponent(
       `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 आधिकारिक वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
     );
-    window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
+    const link = document.createElement('a');
+    link.href = `https://api.whatsapp.com/send?text=${text}`;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.click();
   };
 
   const sloganPresets = [

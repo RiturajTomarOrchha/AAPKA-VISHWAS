@@ -21,6 +21,7 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
   const [assembly, setAssembly] = useState(currentUser.assembly || 'ग्वालियर दक्षिण (17)');
   const [designation, setDesignation] = useState(currentUser.designation || 'सक्रिय कार्यकर्ता');
   const [photoPreview, setPhotoPreview] = useState<string | null>(currentUser.customPhotoUri || null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   if (!isOpen) return null;
 
@@ -38,9 +39,10 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!fullName.trim() || !mobile.trim()) {
-      alert('कृपया अपना नाम और मोबाइल नंबर दर्ज करें।');
+      setErrorMessage('कृपया अपना नाम और मोबाइल नंबर दर्ज करें।');
       return;
     }
+    setErrorMessage(null);
 
     const updated: UserProfile = {
       ...currentUser,
@@ -98,6 +100,13 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
         <p className="text-xs text-slate-300 mb-5 leading-relaxed">
           'आपका विश्वास • सदैव आपके साथ' डिजिटल मंच से जुड़ें। साइन अप पूर्ण होते ही आपको आपका आधिकारिक पहचान पत्र (I-Card) व ऐप इंस्टॉल विकल्प प्राप्त होगा।
         </p>
+
+        {errorMessage && (
+          <div className="mb-4 p-3 rounded-xl bg-red-500/20 border border-red-500/40 text-red-300 text-xs font-semibold flex items-center space-x-2">
+            <span>⚠️</span>
+            <span>{errorMessage}</span>
+          </div>
+        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           

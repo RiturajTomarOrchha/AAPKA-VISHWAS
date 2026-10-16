@@ -19,6 +19,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
 }) => {
   const [installed, setInstalled] = useState(false);
   const [downloadingApk, setDownloadingApk] = useState(false);
+  const [infoTip, setInfoTip] = useState<string | null>(null);
 
   useEffect(() => {
     if (isOpen && isAfterSignUp) {
@@ -47,7 +48,7 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
       }
     } else {
       // If beforeinstallprompt is not available (e.g. already installed or iOS)
-      alert(
+      setInfoTip(
         'ब्राउज़र मेनू (⋮) पर क्लिक करें और "Add to Home screen" या "Install app" का विकल्प चुनें।'
       );
     }
@@ -110,6 +111,13 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
         <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-6">
           बिना किसी रुकावट 1-क्लिक में डिजिटल पोस्टर बनाने, लाइव वॉर रूम संवाद में जुड़ने और दैनिक प्रेस विज्ञप्ति प्राप्त करने के लिए ऐप को तुरंत इंस्टॉल करें।
         </p>
+
+        {infoTip && (
+          <div className="mb-4 p-3 rounded-xl bg-amber-500/20 border border-amber-500/40 text-amber-200 text-xs font-semibold flex items-center space-x-2">
+            <span>ℹ️</span>
+            <span>{infoTip}</span>
+          </div>
+        )}
 
         {/* Action Options */}
         <div className="space-y-3.5">

@@ -9,6 +9,7 @@ interface VideoFeedProps {
 export const VideoFeedScreen: React.FC<VideoFeedProps> = ({ videos }) => {
   const [activeVideo, setActiveVideo] = useState<VideoFeedItem | null>(null);
   const [likes, setLikes] = useState<Record<string, boolean>>({});
+  const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   const toggleLike = (id: string) => {
     setLikes(prev => ({ ...prev, [id]: !prev[id] }));
@@ -20,12 +21,19 @@ export const VideoFeedScreen: React.FC<VideoFeedProps> = ({ videos }) => {
       navigator.share({ title: v.titleHi, text }).catch(() => {});
     } else {
       navigator.clipboard.writeText(text);
-      alert('वीडियो लिंक कॉपी हो गया!');
+      setToastMessage('वीडियो लिंक कॉपी हो गया!');
+      setTimeout(() => setToastMessage(null), 3000);
     }
   };
 
   return (
-    <div className="space-y-6 pb-20 md:pb-6">
+    <div className="space-y-6 pb-20 md:pb-6 relative">
+      {toastMessage && (
+        <div className="fixed bottom-20 right-6 z-50 bg-emerald-600 text-white px-4 py-2.5 rounded-xl shadow-2xl font-bold text-xs flex items-center space-x-2 animate-bounce">
+          <span>✓</span>
+          <span>{toastMessage}</span>
+        </div>
+      )}
       
       {/* Title */}
       <div className="flex items-center justify-between">
