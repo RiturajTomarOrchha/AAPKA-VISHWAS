@@ -30,22 +30,22 @@ export const initialUserProfile: UserProfile = {
 export const sampleFeedItems: FeedItem[] = [
   {
     id: "feed-1",
-    titleHi: "क्षेत्र के समग्र विकास और युवाओं के रोजगार हेतु संकल्पित टीम राठौर",
-    titleEn: "Team Rathore committed to overall regional development and youth employment",
-    categoryHi: "जनसंपर्क व विकास",
-    categoryEn: "Public Connect & Development",
-    captionHi: "हर गाँव, हर ढाणी तक मूलभूत सुविधाओं का विस्तार और युवाओं के हाथ में काम ही हमारा प्रथम संकल्प है। जनसुनवाई के दौरान क्षेत्रवासियों से आत्मीय संवाद।",
-    captionEn: "Expansion of basic amenities to every village and work for youth is our foremost resolution.",
+    titleHi: "आपका विश्वास • सदैव आपके साथ: क्षेत्र के समग्र विकास और जन-जन की सेवा का महा-संकल्प",
+    titleEn: "Aapka Vishwas - Sadaiv Aapke Saath: Great pledge for overall development and public service",
+    categoryHi: "आधिकारिक घोषणा",
+    categoryEn: "Official Announcement",
+    captionHi: "हर गाँव, हर वार्ड और हर घर तक सम्मान, विकास और न्याय पहुँचाना ही हमारा परम ध्येय है। आपका अटूट विश्वास ही हमारी सबसे बड़ी शक्ति है।",
+    captionEn: "Ensuring respect, development, and justice for every household. Your trust is our strength.",
     type: "ADMIN_GRAPHIC",
-    timestampHi: "2 घंटे पहले",
-    timestampEn: "2 hours ago",
-    likesCount: "1.8K",
-    commentsCount: "246",
-    sharesCount: "512",
+    timestampHi: "अभी-अभी लाइव",
+    timestampEn: "Just now",
+    likesCount: "4.9K",
+    commentsCount: "682",
+    sharesCount: "1.5K",
     isFeatured: true,
-    posterHeadlineHi: "विकास हर गाँव, हर घर • हमारी प्रतिबद्धता",
-    posterSubHeadlineHi: "जनता का साथ, हर समय आपके साथ • टीम राठौर",
-    imageUrl: "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=1200&q=80"
+    posterHeadlineHi: "आपका विश्वास • सदैव आपके साथ",
+    posterSubHeadlineHi: "सत्य, सेवा और समर्पण ही राजनीति का मूल आधार है",
+    imageUrl: "/aapka_vishwas_leader.png"
   },
   {
     id: "feed-2",
@@ -122,6 +122,18 @@ export const sampleVideos: VideoFeedItem[] = [
 ];
 
 export const samplePosterTemplates: PosterTemplate[] = [
+  {
+    id: "tpl-aapka-vishwas-flagship",
+    title: "आपका विश्वास • सदैव आपके साथ",
+    category: "अभियान",
+    aspectRatio: "4:5",
+    headerText: "जय जवान • जय किसान • जन-जन की आवाज",
+    footerText: "समर्पित कार्यकर्ता • टीम राठौर",
+    slogan: "आपका विश्वास • सदैव आपके साथ",
+    backgroundGradient: ["#ea580c", "#1e1b4b", "#020617"],
+    bannerTheme: "flagship_leader",
+    accentColor: "#f97316"
+  },
   {
     id: "tpl-saffron-glory",
     title: "राष्ट्र सेवा व विकास पर्व",

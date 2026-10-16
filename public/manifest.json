@@ -1,7 +1,7 @@
 {
-  "name": "टीम राठौर • आपका विश्वास (Team Rathore)",
-  "short_name": "टीम राठौर",
-  "description": "हेमंत राठौर आधिकारिक डिजिटल वेब पोर्टल एवं चुनावी वॉर रूम",
+  "name": "आपका विश्वास • सदैव आपके साथ (टीम राठौर)",
+  "short_name": "आपका विश्वास",
+  "description": "हेमंत राठौर आधिकारिक डिजिटल वेब पोर्टल - आपका विश्वास, सदैव आपके साथ",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#020617",
@@ -9,9 +9,9 @@
   "orientation": "any",
   "icons": [
     {
-      "src": "/congress_logo.svg",
+      "src": "/aapka_vishwas_leader.png",
       "sizes": "192x192 512x512",
-      "type": "image/svg+xml",
+      "type": "image/png",
       "purpose": "any maskable"
     }
   ]

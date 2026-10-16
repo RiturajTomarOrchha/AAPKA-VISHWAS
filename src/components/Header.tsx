@@ -31,20 +31,25 @@ export const Header: React.FC<HeaderProps> = ({
         
         {/* Left Side: Brand / Logo */}
         <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-blue-700 flex items-center justify-center shadow-lg shadow-orange-500/25 text-white font-extrabold text-lg sm:text-xl shrink-0">
-            TR
+          <div className="relative shrink-0">
+            <img
+              src="/aapka_vishwas_leader.png"
+              alt="आपका विश्वास • सदैव आपके साथ"
+              className="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl object-cover ring-2 ring-orange-500/70 shadow-lg shadow-orange-500/30"
+            />
+            <span className="absolute -bottom-1 -right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-900 rounded-full" />
           </div>
           <div className="min-w-0">
             <div className="flex items-center space-x-2">
               <h1 className="font-extrabold text-base sm:text-lg text-white tracking-wide truncate">
-                टीम राठौर
+                आपका विश्वास
               </h1>
               <span className="hidden sm:inline-flex text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm">
-                आधिकारिक वेब पोर्टल
+                सदैव आपके साथ
               </span>
             </div>
             <p className="text-[11px] sm:text-xs text-slate-400 truncate">
-              जनसेवा ही संकल्प • {user.assembly || 'ग्वालियर विधानसभा (17)'}
+              हेमंत राठौर • टीम राठौर • {user.assembly || 'ग्वालियर विधानसभा (17)'}
             </p>
           </div>
         </div>

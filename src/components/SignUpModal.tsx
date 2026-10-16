@@ -79,15 +79,17 @@ export const SignUpModal: React.FC<SignUpModalProps> = ({
         </button>
 
         {/* Header */}
-        <div className="flex items-center space-x-3 mb-5">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white font-black shadow-lg">
-            <Sparkles className="w-6 h-6 text-white" />
-          </div>
+        <div className="flex items-center space-x-3.5 mb-5">
+          <img
+            src="/aapka_vishwas_leader.png"
+            alt="आपका विश्वास"
+            className="w-12 h-12 rounded-2xl object-cover ring-2 ring-orange-500/60 shadow-lg shadow-orange-500/25 shrink-0"
+          />
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-orange-500/20 text-orange-400 border border-orange-500/30">
-              डिजिटल सदस्यता
+            <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">
+              आपका विश्वास • डिजिटल सदस्यता
             </span>
-            <h3 className="text-xl font-black text-white mt-0.5">
+            <h3 className="text-lg sm:text-xl font-black text-white mt-0.5">
               कार्यकर्ता पंजीकरण व साइन अप
             </h3>
           </div>

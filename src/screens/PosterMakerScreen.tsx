@@ -15,14 +15,22 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
   const [aspectRatio, setAspectRatio] = useState<'4:5' | '1:1' | '9:16'>('4:5');
   const [zoomLevel, setZoomLevel] = useState<number>(100);
 
-  const [headline, setHeadline] = useState("विकास हर गाँव, हर घर • हमारी प्रतिबद्धता");
+  const [headline, setHeadline] = useState("आपका विश्वास • सदैव आपके साथ");
   const [subHeadline, setSubHeadline] = useState("जनता का साथ, हर समय आपके साथ • टीम राठौर");
   const [showPhoto, setShowPhoto] = useState(true);
   const [showMobile, setShowMobile] = useState(true);
+  const [showLeaderBadge, setShowLeaderBadge] = useState(true);
   const [userName, setUserName] = useState(user.fullName || "रितुराज तोमर");
   const [designation, setDesignation] = useState(user.designation || "सक्रिय कार्यकर्ता • ग्वालियर");
   const [mobile, setMobile] = useState(user.mobile || "+91 98765 43210");
   const [userPhoto, setUserPhoto] = useState<string | null>(user.customPhotoUri || null);
+  const [leaderImg, setLeaderImg] = useState<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = '/aapka_vishwas_leader.png';
+    img.onload = () => setLeaderImg(img);
+  }, []);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const fileInputRef = useRef<HTMLInputElement | null>(null);
@@ -121,25 +129,38 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     ctx.font = 'bold 24px "Noto Sans Devanagari", sans-serif';
     ctx.fillText('★ जननायक हेमंत राठौर के नेतृत्व में अटूट विश्वास ★', width / 2, cardY + 320);
 
-    // 4. Central Visual Art / Quotes Box
+    // 4. Central Visual Art / Leader Official Emblem or Quotes Box
     const quoteY = cardY + cardHeight + 40;
     const quoteHeight = aspectRatio === '9:16' ? 440 : aspectRatio === '1:1' ? 220 : 340;
-    ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
-    ctx.beginPath();
-    ctx.roundRect(80, quoteY, width - 160, quoteHeight, 24);
-    ctx.fill();
 
-    ctx.fillStyle = '#f8fafc';
-    ctx.font = 'bold 40px "Noto Sans Devanagari", sans-serif';
-    ctx.fillText('॥ राष्ट्रहित सर्वोपरि ॥', width / 2, quoteY + 110);
+    if (showLeaderBadge && leaderImg) {
+      const emblemSize = aspectRatio === '9:16' ? 440 : aspectRatio === '1:1' ? 240 : 360;
+      const emblemX = (width - emblemSize) / 2;
+      const emblemY = quoteY + (quoteHeight - emblemSize) / 2;
 
-    ctx.fillStyle = '#fde047';
-    ctx.font = '600 26px "Noto Sans Devanagari", sans-serif';
-    ctx.fillText('“सत्य, सेवा और समर्पण ही हमारी राजनीति का मूल आधार है।”', width / 2, quoteY + 180);
+      ctx.save();
+      ctx.shadowColor = 'rgba(234, 88, 12, 0.4)';
+      ctx.shadowBlur = 35;
+      ctx.drawImage(leaderImg, emblemX, emblemY, emblemSize, emblemSize);
+      ctx.restore();
+    } else {
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.75)';
+      ctx.beginPath();
+      ctx.roundRect(80, quoteY, width - 160, quoteHeight, 24);
+      ctx.fill();
 
-    ctx.fillStyle = '#94a3b8';
-    ctx.font = '500 22px "Noto Sans Devanagari", sans-serif';
-    ctx.fillText('— हेमंत राठौर (अध्यक्ष, टीम राठौर)', width / 2, quoteY + 235);
+      ctx.fillStyle = '#f8fafc';
+      ctx.font = 'bold 40px "Noto Sans Devanagari", sans-serif';
+      ctx.fillText('॥ राष्ट्रहित सर्वोपरि ॥', width / 2, quoteY + 110);
+
+      ctx.fillStyle = '#fde047';
+      ctx.font = '600 26px "Noto Sans Devanagari", sans-serif';
+      ctx.fillText('“सत्य, सेवा और समर्पण ही हमारी राजनीति का मूल आधार है।”', width / 2, quoteY + 180);
+
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = '500 22px "Noto Sans Devanagari", sans-serif';
+      ctx.fillText('— हेमंत राठौर (अध्यक्ष, टीम राठौर)', width / 2, quoteY + 235);
+    }
 
     // 5. Lower Footer Banner: User Identity Strip
     const footerHeight = 220;
@@ -203,7 +224,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
       ctx.fillText(`📱 मो. ${mobile} • टीम राठौर`, 280, footerY + 172);
     }
 
-  }, [selectedTemplateIndex, headline, subHeadline, showPhoto, showMobile, userName, designation, mobile, userPhoto, template, aspectRatio]);
+  }, [selectedTemplateIndex, headline, subHeadline, showPhoto, showMobile, showLeaderBadge, leaderImg, userName, designation, mobile, userPhoto, template, aspectRatio]);
 
   const handlePhotoUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
@@ -220,7 +241,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
     const canvas = canvasRef.current;
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `TeamRathore_Poster_${Date.now()}.png`;
+    link.download = `AapkaVishwas_Poster_${Date.now()}.png`;
     link.href = canvas.toDataURL('image/png');
     link.click();
 
@@ -233,12 +254,13 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
 
   const shareToWhatsApp = () => {
     const text = encodeURIComponent(
-      `🚩 *टीम राठौर - आधिकारिक डिजिटल पोस्टर*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 टीम राठौर वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
+      `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 टीम राठौर वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
     );
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 
   const sloganPresets = [
+    "आपका विश्वास • सदैव आपके साथ",
     "विकास हर गाँव, हर घर • हमारी प्रतिबद्धता",
     "युवा शक्ति, देश की शक्ति • न्याय और रोजगार",
     "किसान का सम्मान • खुशहाल हिंदुस्तान",
@@ -486,6 +508,15 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
                 3. कार्यकर्ता पहचान पट्टी (Footer Strip)
               </label>
               <div className="flex items-center space-x-3 text-xs">
+                <label className="flex items-center space-x-1.5 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={showLeaderBadge}
+                    onChange={(e) => setShowLeaderBadge(e.target.checked)}
+                    className="accent-orange-500"
+                  />
+                  <span className="text-amber-400 font-semibold">नेताजी प्रतीक</span>
+                </label>
                 <label className="flex items-center space-x-1.5 cursor-pointer">
                   <input
                     type="checkbox"

@@ -75,15 +75,22 @@ export const WarRoomScreen: React.FC<WarRoomProps> = ({
       {/* Live Meeting Broadcast Card */}
       <div className="bg-gradient-to-br from-slate-900 via-indigo-950/60 to-slate-900 border border-indigo-500/30 rounded-3xl p-6 shadow-2xl relative overflow-hidden">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-2">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider shadow">
-              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
-              <span>लाइव वीडियो संवाद जारी</span>
+          <div className="flex items-center space-x-4">
+            <img
+              src="/aapka_vishwas_leader.png"
+              alt="हेमंत राठौर • आपका विश्वास"
+              className="w-16 h-16 sm:w-20 sm:h-20 rounded-2xl object-cover ring-2 ring-orange-500/60 shadow-xl shrink-0"
+            />
+            <div className="space-y-1.5">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-red-600 text-white text-[11px] font-bold uppercase tracking-wider shadow">
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
+                <span>लाइव वीडियो संवाद जारी</span>
+              </div>
+              <h3 className="text-lg sm:text-2xl font-black text-white">{stats.meetingTitle}</h3>
+              <p className="text-xs sm:text-sm text-slate-300">
+                संबोधन: <strong className="text-amber-300">{stats.meetingHost}</strong> • आपका विश्वास, सदैव आपके साथ
+              </p>
             </div>
-            <h3 className="text-xl sm:text-2xl font-black text-white">{stats.meetingTitle}</h3>
-            <p className="text-xs sm:text-sm text-slate-300">
-              संबोधन: <strong className="text-orange-400">{stats.meetingHost}</strong> • समस्त मंडल एवं सेक्टर प्रभारी
-            </p>
           </div>
 
           <div className="flex items-center space-x-3 shrink-0">

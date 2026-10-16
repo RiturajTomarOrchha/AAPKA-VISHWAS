@@ -86,20 +86,23 @@ export const InstallAppModal: React.FC<InstallAppModalProps> = ({
 
         {/* Header Icon & Tag */}
         <div className="flex items-center space-x-3 mb-4">
-          <div className="w-12 h-12 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-red-600 flex items-center justify-center shadow-lg shadow-orange-500/20 text-white font-black text-xl">
-            TR
-          </div>
+          <img
+            src="/aapka_vishwas_leader.png"
+            alt="आपका विश्वास"
+            className="w-13 h-13 rounded-2xl object-cover ring-2 ring-orange-500/60 shadow-lg shadow-orange-500/25 shrink-0"
+            style={{ width: '52px', height: '52px' }}
+          />
           <div>
             <div className="flex items-center space-x-2">
               <span className="text-[11px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-orange-500/20 text-orange-400 border border-orange-500/30">
-                {isAfterSignUp ? '🎉 साइन अप पूर्ण' : '📲 आधिकारिक ऐप'}
+                {isAfterSignUp ? '🎉 साइन अप पूर्ण' : '📲 आपका विश्वास • आधिकारिक ऐप'}
               </span>
               <span className="text-xs text-slate-400">PWA & Android</span>
             </div>
-            <h3 className="text-lg sm:text-xl font-black text-white mt-0.5">
+            <h3 className="text-base sm:text-xl font-black text-white mt-0.5">
               {isAfterSignUp
                 ? 'स्वागतम्! अब ऐप को होम स्क्रीन पर जोड़ें'
-                : 'टीम राठौर आधिकारिक ऐप इंस्टॉल करें'}
+                : 'आपका विश्वास • सदैव आपके साथ'}
             </h3>
           </div>
         </div>

@@ -128,26 +128,32 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         {/* Left / Main Column (xl:col-span-8) */}
         <div className="xl:col-span-8 space-y-6">
           
-          {/* Hero Welcome & Quick Action Card */}
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-600 via-amber-600 to-blue-900 p-6 sm:p-8 text-white shadow-2xl">
-            <div className="relative z-10 max-w-2xl">
-              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-3">
+          {/* Hero Welcome & Quick Action Card with Official Leader Emblem */}
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-orange-600 via-amber-600 to-blue-900 p-6 sm:p-8 text-white shadow-2xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="relative z-10 max-w-xl">
+              <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold mb-2">
                 <Sparkles className="w-3.5 h-3.5 text-amber-200" />
-                <span>जनसेवा ही संकल्प • जन-जन की आवाज</span>
+                <span>जनसेवा ही संकल्प • राष्ट्र सर्वोपरि</span>
               </div>
+              
               <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
                 स्वागतम्, {user.fullName || 'रितुराज तोमर'} जी!
               </h2>
+              
+              <div className="text-base sm:text-xl font-black text-amber-200 mt-1 flex items-center space-x-2">
+                <span>🚩 आपका विश्वास • सदैव आपके साथ</span>
+              </div>
+
               <p className="mt-2 text-xs sm:text-sm text-orange-100 max-w-xl leading-relaxed">
-                टीम राठौर के डिजिटल महा-मंच पर आपका स्वागत है। यहाँ से आप दैनिक प्रचार सामग्री, 4:5 HD डिजिटल पोस्टर, बूथ वॉर रूम व योद्धा मंच से सीधे जुड़ सकते हैं।
+                टीम राठौर के आधिकारिक डिजिटल मंच पर आपका स्वागत है। यहाँ से आप 4:5 HD डिजिटल पोस्टर बना सकते हैं, बूथ वॉर रूम में जुड़ सकते हैं और जनसंपर्क अभियान को गति दे सकते हैं।
               </p>
 
-              <div className="mt-5 sm:mt-6 flex flex-wrap gap-2.5 sm:gap-3">
+              <div className="mt-5 flex flex-wrap gap-2.5 sm:gap-3">
                 <button
                   onClick={onNavigateToPosters}
                   className="px-4 sm:px-5 py-2.5 rounded-xl bg-white text-orange-700 hover:bg-orange-50 font-bold text-xs sm:text-sm shadow-lg shadow-black/20 transition-transform active:scale-95 flex items-center space-x-2"
                 >
-                  <span>🎨 अपना पोस्टर बनाएं</span>
+                  <span>🎨 पोस्टर बनाएं</span>
                 </button>
                 <button
                   onClick={onNavigateToWarRoom}
@@ -166,6 +172,21 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   </button>
                 )}
               </div>
+            </div>
+
+            {/* Right side: Grand Official Leader Emblem "आपका विश्वास • सदैव आपके साथ" */}
+            <div className="relative z-10 flex flex-col items-center shrink-0 self-center">
+              <div className="relative group">
+                <div className="absolute -inset-1.5 bg-gradient-to-r from-amber-400 via-orange-500 to-amber-300 rounded-3xl blur-md opacity-70 group-hover:opacity-100 transition duration-500 pointer-events-none" />
+                <img
+                  src="/aapka_vishwas_leader.png"
+                  alt="आपका विश्वास • सदैव आपके साथ"
+                  className="relative w-44 sm:w-52 lg:w-56 h-auto rounded-3xl shadow-2xl ring-2 ring-white/30 transform hover:scale-105 transition-transform duration-300 object-contain"
+                />
+              </div>
+              <span className="mt-2 text-[10px] sm:text-[11px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full bg-slate-950/85 text-amber-300 border border-amber-400/40 shadow">
+                ★ आपका विश्वास • सदैव आपके साथ ★
+              </span>
             </div>
 
             {/* Decorative background shape */}

@@ -169,30 +169,34 @@ export const Navigation: React.FC<NavigationProps> = ({
           </div>
         )}
 
-        {/* Quick Hotline Banner */}
-        <div className="mt-auto p-4 rounded-2xl bg-gradient-to-br from-slate-800 to-slate-900 border border-slate-700/60 text-center">
-          <div className="w-8 h-8 mx-auto rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold mb-2">
-            📞
-          </div>
-          <h4 className="text-xs font-bold text-white">हेल्पलाइन व वॉर रूम</h4>
-          <p className="text-[11px] text-slate-400 mt-0.5">24x7 जनसंपर्क एवं समस्या निवारण</p>
-          <div className="mt-3 grid grid-cols-2 gap-2">
-            <a
-              href="tel:+919876543210"
-              className="py-1.5 px-2 bg-orange-600 hover:bg-orange-500 text-white font-medium text-[11px] rounded-lg transition-colors flex items-center justify-center space-x-1"
-            >
-              <Phone className="w-3 h-3" />
-              <span>कॉल</span>
-            </a>
-            <a
-              href="https://api.whatsapp.com/send?phone=919876543210"
-              target="_blank"
-              rel="noreferrer"
-              className="py-1.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[11px] rounded-lg transition-colors flex items-center justify-center space-x-1"
-            >
-              <MessageSquare className="w-3 h-3" />
-              <span>व्हाट्सएप</span>
-            </a>
+        {/* Quick Campaign & Hotline Card */}
+        <div className="mt-auto p-4 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 text-center relative overflow-hidden">
+          <div className="relative z-10">
+            <img
+              src="/aapka_vishwas_leader.png"
+              alt="आपका विश्वास • सदैव आपके साथ"
+              className="w-16 h-16 mx-auto rounded-2xl object-cover ring-2 ring-orange-500/60 shadow-lg shadow-orange-500/20 mb-2"
+            />
+            <h4 className="text-xs font-black text-amber-300">आपका विश्वास</h4>
+            <p className="text-[10px] font-semibold text-slate-300">सदैव आपके साथ • 24x7 हेल्पलाइन</p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              <a
+                href="tel:+919876543210"
+                className="py-1.5 px-2 bg-orange-600 hover:bg-orange-500 text-white font-medium text-[11px] rounded-lg transition-colors flex items-center justify-center space-x-1"
+              >
+                <Phone className="w-3 h-3" />
+                <span>कॉल</span>
+              </a>
+              <a
+                href="https://api.whatsapp.com/send?phone=919876543210"
+                target="_blank"
+                rel="noreferrer"
+                className="py-1.5 px-2 bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-[11px] rounded-lg transition-colors flex items-center justify-center space-x-1"
+              >
+                <MessageSquare className="w-3 h-3" />
+                <span>व्हाट्सएप</span>
+              </a>
+            </div>
           </div>
         </div>
 

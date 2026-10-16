@@ -68,17 +68,19 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
             <div className="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-orange-500 via-white to-emerald-500" />
 
             {/* Header with Logo */}
-            <div className="flex items-center justify-between pb-4 border-b border-slate-800">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 rounded-lg bg-orange-600 flex items-center justify-center font-black text-white text-sm">
-                  TR
-                </div>
+            <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+              <div className="flex items-center space-x-2.5">
+                <img
+                  src="/aapka_vishwas_leader.png"
+                  alt="आपका विश्वास"
+                  className="w-10 h-10 rounded-xl object-cover ring-1 ring-orange-500/60 shadow shrink-0"
+                />
                 <div>
-                  <h4 className="text-xs font-bold text-white tracking-wide">टीम राठौर • केंद्रीय कार्यालय</h4>
-                  <p className="text-[9px] text-orange-400 font-medium">आधिकारिक डिजिटल पहचान पत्र (I-CARD)</p>
+                  <h4 className="text-xs font-bold text-white tracking-wide">आपका विश्वास • टीम राठौर</h4>
+                  <p className="text-[9px] text-amber-400 font-semibold">सदैव आपके साथ • आधिकारिक पहचान पत्र</p>
                 </div>
               </div>
-              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+              <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30 shrink-0">
                 वैध 2026-27
               </span>
             </div>
