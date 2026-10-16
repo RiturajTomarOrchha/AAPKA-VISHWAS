@@ -1,0 +1,6 @@
+{
+  "name": "TEAM RATHORE",
+  "description": "Political communication, content creation, war room, and direct citizen connect app for Team Rathore.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
