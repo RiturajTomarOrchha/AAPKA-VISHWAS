@@ -9,7 +9,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <title>टीम राठौर • आधिकारिक वेब पोर्टल (Team Rathore)</title>
-    <meta name="description" content="हेमंत राठौर आधिकारिक डिजिटल वेब पोर्टल - डिजिटल पोस्टर स्टूडियो, वॉर रूम, वीडियो, योद्धा मंच एवं दैनिक समाचार" />
+    <link rel="manifest" href="/manifest.json" />
     <!-- Google Fonts for Hindi and Modern Display -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,5 +18,12 @@
   <body class="bg-slate-950 text-slate-100 font-devanagari antialiased selection:bg-orange-500 selection:text-white min-h-[100dvh]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>

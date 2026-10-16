@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FeedItem, ImportantNotice, UserProfile, WarRoomStats, ProgramItem, PosterTemplate } from '../types';
-import { Heart, Share2, Download, MessageCircle, AlertTriangle, ChevronRight, Sparkles, CheckCircle2, Flame, Radio, Phone, ArrowRight, Calendar, Users, Eye } from 'lucide-react';
+import { Heart, Share2, Download, MessageCircle, AlertTriangle, ChevronRight, Sparkles, CheckCircle2, Flame, Radio, Phone, ArrowRight, Calendar, Users, Smartphone, UserPlus } from 'lucide-react';
 
 interface HomeScreenProps {
   feedItems: FeedItem[];
@@ -12,6 +12,8 @@ interface HomeScreenProps {
   templates?: PosterTemplate[];
   onNavigateToPosters: () => void;
   onNavigateToWarRoom: () => void;
+  onOpenInstallApp?: () => void;
+  onOpenSignUp?: () => void;
 }
 
 export const HomeScreen: React.FC<HomeScreenProps> = ({
@@ -23,17 +25,20 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
   programs = [],
   templates = [],
   onNavigateToPosters,
-  onNavigateToWarRoom
+  onNavigateToWarRoom,
+  onOpenInstallApp,
+  onOpenSignUp
 }) => {
   const [likes, setLikes] = useState<Record<string, boolean>>({});
   const [shareSuccess, setShareSuccess] = useState<string | null>(null);
+  const [activeFeedCategory, setActiveFeedCategory] = useState<string>('सभी');
 
   const toggleLike = (id: string) => {
     setLikes(prev => ({ ...prev, [id]: !prev[id] }));
   };
 
   const handleShare = (item: FeedItem) => {
-    const text = `${item.titleHi}\n\n${item.captionHi}\n\n🔗 टीम राठौर आधिकारिक पोर्टल\n#TeamRathore #AapkaVishwas`;
+    const text = `${item.titleHi}\n\n${item.captionHi}\n\n🔗 टीम राठौर आधिकारिक वेब पोर्टल: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS\n#TeamRathore #AapkaVishwas`;
     if (navigator.share) {
       navigator.share({
         title: item.titleHi,
@@ -48,10 +53,16 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
   const urgentNotice = notices.find(n => n.isUrgent);
 
+  const feedCategories = ['सभी', 'जनसंपर्क व विकास', 'किसान कल्याण', 'युवा शक्ति'];
+
+  const filteredFeed = activeFeedCategory === 'सभी'
+    ? feedItems
+    : feedItems.filter(item => item.categoryHi.includes(activeFeedCategory) || item.categoryHi === activeFeedCategory);
+
   return (
     <div className="space-y-6">
       
-      {/* Urgent Notice Ticker (Top priority on all devices) */}
+      {/* 1. Urgent Notice Ticker */}
       {urgentNotice && (
         <div
           onClick={onNavigateToWarRoom}
@@ -77,7 +88,41 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
         </div>
       )}
 
-      {/* Main Dual Layout: Left Stream + Right PC Desktop Companion Sidebar */}
+      {/* 2. "Add to Home Screen / Install Web App" Prominent Banner (Requested by User) */}
+      {onOpenInstallApp && (
+        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-orange-900/40 via-amber-950/30 to-slate-900 border border-orange-500/40 p-3.5 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-lg">
+          <div className="flex items-center space-x-3">
+            <div className="w-10 h-10 rounded-xl bg-orange-600/20 text-orange-400 flex items-center justify-center shrink-0 border border-orange-500/30">
+              <Smartphone className="w-5 h-5 animate-pulse" />
+            </div>
+            <div>
+              <div className="flex items-center space-x-2">
+                <span className="text-xs font-bold text-white">
+                  टीम राठौर ऐप अपने फोन या पीसी की होम स्क्रीन पर जोड़ें
+                </span>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+                  APK उपलब्ध
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-300 mt-0.5">
+                सीधे ब्राउज़र से 1-क्लिक में वेब ऐप इंस्टॉल करें या 30 MB Android APK डाउनलोड करें।
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center space-x-2 shrink-0">
+            <button
+              onClick={onOpenInstallApp}
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-xs shadow-md shadow-orange-600/30 flex items-center space-x-1.5 transition-all active:scale-95"
+            >
+              <Smartphone className="w-3.5 h-3.5" />
+              <span>होम स्क्रीन पर जोड़ें</span>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* 3. Main Dual Column Layout (PC & Tablet Web App Grid) */}
       <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
         
         {/* Left / Main Column (xl:col-span-8) */}
@@ -111,6 +156,15 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
                   <span className="w-2 h-2 rounded-full bg-red-500 animate-ping mr-1" />
                   <span>वॉर रूम में जुड़ें</span>
                 </button>
+                {onOpenSignUp && (
+                  <button
+                    onClick={onOpenSignUp}
+                    className="px-4 sm:px-5 py-2.5 rounded-xl bg-amber-500/20 hover:bg-amber-500/30 text-amber-200 font-bold text-xs sm:text-sm border border-amber-400/30 backdrop-blur-md shadow-lg transition-transform active:scale-95 flex items-center space-x-2"
+                  >
+                    <UserPlus className="w-4 h-4" />
+                    <span>सदस्यता / साइन अप</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -133,22 +187,38 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             ))}
           </div>
 
-          {/* Feed Items Stream */}
+          {/* Feed Items Stream with Category Filtering */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <h3 className="text-base sm:text-lg font-bold text-white flex items-center space-x-2">
                 <span>📢 मुख्य जनसंपर्क व समाचार</span>
               </h3>
-              <span className="text-xs text-slate-400">दैनिक सोशल अपडेट</span>
+              
+              {/* Category Filter Pills */}
+              <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 scrollbar-none">
+                {feedCategories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setActiveFeedCategory(cat)}
+                    className={`px-3 py-1 rounded-xl text-xs font-semibold whitespace-nowrap transition-colors ${
+                      activeFeedCategory === cat
+                        ? 'bg-orange-600 text-white'
+                        : 'bg-slate-800 text-slate-400 hover:text-slate-200'
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="grid grid-cols-1 gap-5">
-              {feedItems.map((item) => {
+              {filteredFeed.map((item) => {
                 const isLiked = likes[item.id];
                 return (
                   <article
                     key={item.id}
-                    className="bg-slate-900/90 border border-slate-800 rounded-2xl overflow-hidden shadow-xl hover:border-slate-700 transition-all"
+                    className="bg-slate-900/90 border border-slate-800 rounded-3xl overflow-hidden shadow-xl hover:border-slate-700 transition-all"
                   >
                     {/* Header */}
                     <div className="p-3.5 sm:p-5 flex items-start justify-between">
@@ -250,10 +320,50 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
 
         </div>
 
-        {/* Right Desktop Companion Sidebar (Visible on wide PC Chrome screens xl:block) */}
+        {/* Right Desktop Companion Sidebar (Optimized for PC Desktop & Tablet) */}
         <div className="hidden xl:flex xl:col-span-4 flex-col space-y-5 sticky top-20">
           
-          {/* 1. Live War Room Companion Card */}
+          {/* 1. Add to Home Screen & APK Download Widget */}
+          {onOpenInstallApp && (
+            <div className="bg-gradient-to-br from-orange-950/60 via-slate-900 to-slate-950 border border-orange-500/40 rounded-3xl p-5 shadow-xl relative overflow-hidden">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div className="flex items-center space-x-2">
+                  <Smartphone className="w-4 h-4 text-orange-400" />
+                  <h4 className="font-bold text-sm text-white">ऐप इंस्टॉल / APK</h4>
+                </div>
+                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 font-bold border border-emerald-500/30">
+                  Android & Web
+                </span>
+              </div>
+
+              <div className="mt-3.5 space-y-3">
+                <p className="text-xs text-slate-300 leading-relaxed">
+                  वेब ऐप को बिना ब्राउज़र एड्रेस बार के नेटिव ऐप की तरह चलाने के लिए होम स्क्रीन पर जोड़ें।
+                </p>
+
+                <div className="space-y-2">
+                  <button
+                    onClick={onOpenInstallApp}
+                    className="w-full py-2.5 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-orange-600/25 transition-all active:scale-95"
+                  >
+                    <Smartphone className="w-3.5 h-3.5" />
+                    <span>होम स्क्रीन पर जोड़ें (Install)</span>
+                  </button>
+
+                  <a
+                    href="/TeamRathore.apk"
+                    download="TeamRathore_Official.apk"
+                    className="w-full py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs flex items-center justify-center space-x-2 border border-slate-700 transition-colors"
+                  >
+                    <Download className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Android APK डाउनलोड (~30 MB)</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* 2. Live War Room Companion Card */}
           <div className="bg-gradient-to-br from-slate-900 via-indigo-950/40 to-slate-900 border border-indigo-500/30 rounded-3xl p-5 shadow-xl relative overflow-hidden">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <div className="flex items-center space-x-2">
@@ -291,11 +401,11 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </div>
           </div>
 
-          {/* 2. Trending Posters Studio Teaser */}
+          {/* 3. Trending Posters Studio Teaser with All Lined up Previews */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-xl">
             <div className="flex items-center justify-between pb-3 border-b border-slate-800">
               <h4 className="font-bold text-sm text-white flex items-center space-x-2">
-                <span>🎨 पोस्टर स्टूडियो हॉट-पिक्स</span>
+                <span>🎨 पोस्टर स्टूडियो थीम्स ({templates.length})</span>
               </h4>
               <button
                 onClick={onNavigateToPosters}
@@ -307,7 +417,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </div>
 
             <div className="mt-3.5 space-y-2.5">
-              {(templates.length > 0 ? templates.slice(0, 2) : []).map((tpl, idx) => (
+              {(templates.length > 0 ? templates.slice(0, 3) : []).map((tpl, idx) => (
                 <div
                   key={tpl.id || idx}
                   onClick={onNavigateToPosters}
@@ -333,7 +443,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </div>
           </div>
 
-          {/* 3. Official Notices Bulletins */}
+          {/* 4. Official Notices Bulletins */}
           <div className="bg-slate-900 border border-slate-800 rounded-3xl p-5 shadow-xl">
             <h4 className="font-bold text-sm text-white pb-3 border-b border-slate-800 flex items-center space-x-2">
               <span>📋 ताज़ा कार्यालय परिपत्र</span>
@@ -353,7 +463,7 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
             </div>
           </div>
 
-          {/* 4. Quick Helpline & Control Room */}
+          {/* 5. Quick Helpline & Control Room */}
           <div className="bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 rounded-3xl p-5 text-center">
             <div className="w-10 h-10 mx-auto rounded-full bg-orange-500/20 text-orange-400 flex items-center justify-center font-bold mb-2">
               📞
@@ -385,4 +495,3 @@ export const HomeScreen: React.FC<HomeScreenProps> = ({
     </div>
   );
 };
-

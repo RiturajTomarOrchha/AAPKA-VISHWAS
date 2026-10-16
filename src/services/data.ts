@@ -169,6 +169,54 @@ export const samplePosterTemplates: PosterTemplate[] = [
     backgroundGradient: ["#b45309", "#78350f", "#451a03"],
     bannerTheme: "festive_gold",
     accentColor: "#fbbf24"
+  },
+  {
+    id: "tpl-kisan-nyay",
+    title: "किसान न्याय एवं खुशहाली",
+    category: "किसान",
+    aspectRatio: "4:5",
+    headerText: "जय जवान • जय किसान • खुशहाल हिंदुस्तान",
+    footerText: "किसान कल्याण मोर्चा • टीम राठौर",
+    slogan: "अन्नदाता का मान, देश की शान",
+    backgroundGradient: ["#14532d", "#064e3b", "#022c22"],
+    bannerTheme: "kisan_green",
+    accentColor: "#22c55e"
+  },
+  {
+    id: "tpl-youth-power",
+    title: "युवा शक्ति • रोजगार अधिकार",
+    category: "युवा",
+    aspectRatio: "4:5",
+    headerText: "युवा शक्ति ही देश की सबसे बड़ी ताकत है",
+    footerText: "युवा संवाद प्रकोष्ठ • टीम राठौर",
+    slogan: "शिक्षा, सम्मान और सुनिश्चित रोजगार",
+    backgroundGradient: ["#991b1b", "#7f1d1d", "#450a0a"],
+    bannerTheme: "youth_red",
+    accentColor: "#ef4444"
+  },
+  {
+    id: "tpl-samvidhan-raksha",
+    title: "संविधान व लोकतंत्र रक्षा",
+    category: "अभियान",
+    aspectRatio: "4:5",
+    headerText: "सत्य, अहिंसा और सामाजिक न्याय",
+    footerText: "जनसंपर्क एवं विचार प्रकोष्ठ",
+    slogan: "लोकतंत्र बचाओ, देश आगे बढ़ाओ",
+    backgroundGradient: ["#581c87", "#3b0764", "#1e1b4b"],
+    bannerTheme: "royal_purple",
+    accentColor: "#a855f7"
+  },
+  {
+    id: "tpl-shradhanjali",
+    title: "सादर नमन • विनम्र श्रद्धांजलि",
+    category: "स्मृति",
+    aspectRatio: "4:5",
+    headerText: "॥ विनम्र श्रद्धांजलि ॥",
+    footerText: "शोक संतप्त: समस्त टीम राठौर परिवार",
+    slogan: "ईश्वर दिवंगत आत्मा को शांति प्रदान करें",
+    backgroundGradient: ["#334155", "#1e293b", "#0f172a"],
+    bannerTheme: "solemn_dark",
+    accentColor: "#94a3b8"
   }
 ];
 

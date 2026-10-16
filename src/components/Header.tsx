@@ -1,13 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UserProfile, Language } from '../types';
-import { Bell, Globe, Shield, Sparkles } from 'lucide-react';
+import { Bell, Globe, Download, Smartphone, Sparkles, UserPlus, Menu, X, Search } from 'lucide-react';
 
 interface HeaderProps {
   user: UserProfile;
   lang: Language;
   onToggleLang: () => void;
   onOpenProfile: () => void;
+  onOpenInstallApp: () => void;
+  onOpenSignUp: () => void;
   unreadCount?: number;
+  onToggleSidebar?: () => void;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -15,44 +18,91 @@ export const Header: React.FC<HeaderProps> = ({
   lang,
   onToggleLang,
   onOpenProfile,
-  unreadCount = 3
+  onOpenInstallApp,
+  onOpenSignUp,
+  unreadCount = 3,
+  onToggleSidebar
 }) => {
+  const [showNotifications, setShowNotifications] = useState(false);
+
   return (
-    <header className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
+    <header className="sticky top-0 z-40 bg-slate-900/95 backdrop-blur-xl border-b border-slate-800 px-3 sm:px-6 py-2.5">
+      <div className="max-w-[1600px] mx-auto flex items-center justify-between gap-3">
         
-        {/* Brand / Logo */}
+        {/* Left Side: Brand / Logo */}
         <div className="flex items-center space-x-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-600 via-amber-500 to-blue-700 flex items-center justify-center shadow-lg shadow-orange-500/20 text-white font-extrabold text-xl">
+          <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-orange-600 via-amber-500 to-blue-700 flex items-center justify-center shadow-lg shadow-orange-500/25 text-white font-extrabold text-lg sm:text-xl shrink-0">
             TR
           </div>
-          <div>
+          <div className="min-w-0">
             <div className="flex items-center space-x-2">
-              <h1 className="font-bold text-lg text-white tracking-wide">टीम राठौर</h1>
-              <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm">
-                आधिकारिक
+              <h1 className="font-extrabold text-base sm:text-lg text-white tracking-wide truncate">
+                टीम राठौर
+              </h1>
+              <span className="hidden sm:inline-flex text-[10px] font-bold uppercase px-2 py-0.5 rounded-full bg-gradient-to-r from-orange-500 to-amber-500 text-white shadow-sm">
+                आधिकारिक वेब पोर्टल
               </span>
             </div>
-            <p className="text-xs text-slate-400">जनसेवा ही संकल्प • {user.assembly || 'ग्वालियर'}</p>
+            <p className="text-[11px] sm:text-xs text-slate-400 truncate">
+              जनसेवा ही संकल्प • {user.assembly || 'ग्वालियर विधानसभा (17)'}
+            </p>
           </div>
         </div>
 
-        {/* Action Controls */}
-        <div className="flex items-center space-x-2 sm:space-x-4">
+        {/* Center: Search Bar on Desktop/Tablet */}
+        <div className="hidden lg:flex items-center flex-1 max-w-md mx-4">
+          <div className="relative w-full">
+            <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-2.5" />
+            <input
+              type="text"
+              placeholder="खोजें: समाचार, पोस्टर थीम्स, बूथ स्टेटस, परिपत्र..."
+              className="w-full pl-10 pr-4 py-2 rounded-xl bg-slate-950/80 border border-slate-800 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-orange-500/80 transition-all"
+            />
+            <span className="absolute right-3 top-2 text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 font-mono">
+              Ctrl+K
+            </span>
+          </div>
+        </div>
+
+        {/* Right Side Controls */}
+        <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
           
+          {/* Prominent "Add to Home Screen / Install App" Button (Requested by User) */}
+          <button
+            onClick={onOpenInstallApp}
+            className="flex items-center space-x-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-gradient-to-r from-orange-600 to-amber-600 hover:from-orange-500 hover:to-amber-500 text-white font-bold text-xs shadow-lg shadow-orange-600/25 transition-all active:scale-95 border border-orange-400/30"
+            title="वेब ऐप को होम स्क्रीन पर जोड़ें या APK डाउनलोड करें"
+          >
+            <Smartphone className="w-4 h-4 animate-bounce shrink-0" />
+            <span className="hidden sm:inline">ऐप इंस्टॉल करें</span>
+            <span className="sm:hidden text-[11px]">ऐप लें</span>
+          </button>
+
+          {/* Sign Up / Member Registration Button */}
+          <button
+            onClick={onOpenSignUp}
+            className="hidden md:flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs border border-slate-700 transition-colors"
+          >
+            <UserPlus className="w-3.5 h-3.5 text-orange-400" />
+            <span>पंजीकरण</span>
+          </button>
+
           {/* Language Toggle */}
           <button
             onClick={onToggleLang}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 transition-colors border border-slate-700/60"
+            className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-medium text-slate-300 transition-colors border border-slate-700/60"
             title="भाषा बदलें (Change Language)"
           >
             <Globe className="w-3.5 h-3.5 text-orange-400" />
             <span>{lang === 'hi' ? 'EN' : 'हिन्दी'}</span>
           </button>
 
-          {/* Notification Icon */}
+          {/* Notification Bell */}
           <div className="relative">
-            <button className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors border border-slate-700/60">
+            <button
+              onClick={() => setShowNotifications(!showNotifications)}
+              className="p-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 transition-colors border border-slate-700/60 relative"
+            >
               <Bell className="w-4 h-4" />
               {unreadCount > 0 && (
                 <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 text-[10px] font-bold rounded-full flex items-center justify-center text-white ring-2 ring-slate-900">
@@ -60,19 +110,39 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               )}
             </button>
+
+            {/* Notification Popover */}
+            {showNotifications && (
+              <div className="absolute right-0 mt-2 w-72 sm:w-80 rounded-2xl bg-slate-900 border border-slate-700 shadow-2xl p-4 z-50 animate-in fade-in slide-in-from-top-2">
+                <div className="flex items-center justify-between pb-2 border-b border-slate-800">
+                  <h4 className="text-xs font-bold text-white">ताज़ा अलर्ट्स व सूचनाएं</h4>
+                  <span className="text-[10px] text-orange-400 font-semibold">3 नए</span>
+                </div>
+                <div className="mt-2 space-y-2 text-xs">
+                  <div className="p-2 rounded-lg bg-slate-950/60 hover:bg-slate-950 transition-colors">
+                    <div className="text-white font-semibold text-[11px]">🔴 वॉर रूम लाइव समीक्षा जारी</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">विधानसभा 284 बूथों की बैठक प्रारंभ।</div>
+                  </div>
+                  <div className="p-2 rounded-lg bg-slate-950/60 hover:bg-slate-950 transition-colors">
+                    <div className="text-white font-semibold text-[11px]">🎨 नया पोस्टर टेम्पलेट उपलब्ध</div>
+                    <div className="text-[10px] text-slate-400 mt-0.5">किसान न्याय व युवा क्रांति बैनर लाइव।</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* User Profile Mini Chip */}
           <div
             onClick={onOpenProfile}
-            className="flex items-center space-x-2 pl-2 pr-3 py-1 rounded-full bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 cursor-pointer transition-all"
+            className="flex items-center space-x-2 pl-1.5 pr-2.5 py-1 rounded-full bg-slate-800/80 hover:bg-slate-700 border border-slate-700/60 cursor-pointer transition-all"
           >
-            <div className="w-7 h-7 rounded-full bg-orange-600 flex items-center justify-center text-white font-bold text-xs shadow">
+            <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-orange-600 to-amber-500 flex items-center justify-center text-white font-bold text-xs shadow">
               {user.fullName ? user.fullName[0] : 'र'}
             </div>
-            <div className="hidden md:block text-left text-xs leading-tight">
-              <div className="font-semibold text-slate-200">{user.fullName || 'रितुराज तोमर'}</div>
-              <div className="text-[10px] text-orange-400">{user.designation || 'कार्यकर्ता'}</div>
+            <div className="hidden lg:block text-left text-xs leading-tight">
+              <div className="font-semibold text-slate-200 truncate max-w-[100px]">{user.fullName || 'रितुराज'}</div>
+              <div className="text-[10px] text-orange-400 truncate max-w-[100px]">{user.designation || 'कार्यकर्ता'}</div>
             </div>
           </div>
 
