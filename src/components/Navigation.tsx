@@ -178,7 +178,7 @@ export const Navigation: React.FC<NavigationProps> = ({
               className="w-16 h-16 mx-auto rounded-2xl object-cover ring-2 ring-orange-500/60 shadow-lg shadow-orange-500/20 mb-2"
             />
             <h4 className="text-xs font-black text-amber-300">आपका विश्वास</h4>
-            <p className="text-[10px] font-semibold text-slate-300">सदैव आपके साथ • 24x7 हेल्पलाइन</p>
+            <p className="text-[10px] font-semibold text-slate-300">नरेला विधानसभा (भोपाल) • 24x7 हेल्पलाइन</p>
             <div className="mt-3 grid grid-cols-2 gap-2">
               <a
                 href="tel:+919876543210"

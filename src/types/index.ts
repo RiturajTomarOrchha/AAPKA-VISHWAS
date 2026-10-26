@@ -14,6 +14,8 @@ export interface UserProfile {
   state: string;
   district: string;
   assembly: string;
+  mandal?: string;
+  ward?: string;
   village: string;
   role: UserRole;
   designation: string;
@@ -21,6 +23,8 @@ export interface UserProfile {
   isPendingReview: boolean;
   reviewReason: string;
   customPhotoUri: string | null;
+  customLogoUri?: string | null;
+  isLoggedIn: boolean;
   isBlocked: boolean;
   hasFacebook: boolean;
   hasInstagram: boolean;
@@ -53,6 +57,8 @@ export interface FeedItem {
   facebookContentHi?: string;
   facebookUrl?: string;
   imageUrl?: string;
+  downloadableGraphicUrl?: string;
+  graphicTheme?: string;
 }
 
 export interface VideoFeedItem {

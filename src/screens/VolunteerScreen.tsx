@@ -116,7 +116,7 @@ export const VolunteerScreen: React.FC<VolunteerProps> = ({ user }) => {
                 <div className="text-base font-extrabold text-white">{user.fullName || 'रितुराज तोमर'}</div>
                 <div className="text-xs font-bold text-orange-400">{user.designation || 'सक्रिय कार्यकर्ता'}</div>
                 <div className="text-[10px] text-slate-300">सदस्यता क्र: <strong>AV-MP-2026-0842</strong></div>
-                <div className="text-[10px] text-slate-400">विधानसभा: <strong>{user.assembly || 'ग्वालियर'}</strong></div>
+                <div className="text-[10px] text-slate-400">विधानसभा: <strong>{user.assembly || 'नरेला विधानसभा (151), भोपाल'}</strong></div>
               </div>
             </div>
 

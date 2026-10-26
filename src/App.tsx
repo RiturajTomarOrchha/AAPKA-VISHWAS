@@ -18,7 +18,7 @@ import {
   sampleNotices,
   sampleWarRoomStats
 } from './services/data';
-import { UserProfile, Language } from './types';
+import { UserProfile, Language, UserRole } from './types';
 
 export const App: React.FC = () => {
   const [currentTab, setCurrentTab] = useState<TabKey>('home');
@@ -60,18 +60,39 @@ export const App: React.FC = () => {
   };
 
   const handleCompleteSignUp = (updatedUser: UserProfile) => {
-    setUser(updatedUser);
+    setUser({ ...updatedUser, isLoggedIn: true });
     setIsSignUpModalOpen(false);
-    // As requested: After completing sign up, automatically show the "Add to Home Screen / Download Web App APK" prompt!
+    // After sign up, prompt the user with the install/add to home screen
     setIsAfterSignUp(true);
     setCurrentTab('home');
     setIsInstallModalOpen(true);
   };
 
+  // Logout handler requested by user: resets profile so user can see sign up page again
+  const handleLogout = () => {
+    setUser({
+      ...initialUserProfile,
+      fullName: '',
+      fatherName: '',
+      mobile: '',
+      whatsapp: '',
+      customPhotoUri: null,
+      customLogoUri: null,
+      isLoggedIn: false,
+      profileCompletion: 10
+    });
+    // Open the Sign Up modal immediately so user can examine and test the registration page!
+    setIsSignUpModalOpen(true);
+  };
+
+  const handleUpdateRole = (newRole: UserRole) => {
+    setUser(prev => ({ ...prev, role: newRole }));
+  };
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-devanagari">
       
-      {/* Top Header (Web Application Layout) */}
+      {/* Top Header (Web Application Layout with Narela Bhopal branding & Logout support) */}
       <Header
         user={user}
         lang={lang}
@@ -79,6 +100,7 @@ export const App: React.FC = () => {
         onOpenProfile={() => setCurrentTab('profile')}
         onOpenInstallApp={handleOpenInstallApp}
         onOpenSignUp={() => setIsSignUpModalOpen(true)}
+        onLogout={handleLogout}
       />
 
       {/* Main Body with Sidebar + Screen Content */}
@@ -107,6 +129,7 @@ export const App: React.FC = () => {
               onNavigateToWarRoom={() => setCurrentTab('warroom')}
               onOpenInstallApp={handleOpenInstallApp}
               onOpenSignUp={() => setIsSignUpModalOpen(true)}
+              onUpdateRole={handleUpdateRole}
             />
           )}
 
@@ -143,6 +166,7 @@ export const App: React.FC = () => {
             <ProfileScreen
               user={user}
               onUpdateUser={setUser}
+              onLogout={handleLogout}
             />
           )}
         </main>

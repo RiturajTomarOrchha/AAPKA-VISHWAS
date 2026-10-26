@@ -21,7 +21,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
   const [showMobile, setShowMobile] = useState(true);
   const [showLeaderBadge, setShowLeaderBadge] = useState(true);
   const [userName, setUserName] = useState(user.fullName || "रितुराज तोमर");
-  const [designation, setDesignation] = useState(user.designation || "सक्रिय कार्यकर्ता • ग्वालियर");
+  const [designation, setDesignation] = useState(user.designation || "सक्रिय कार्यकर्ता • नरेला भोपाल");
   const [mobile, setMobile] = useState(user.mobile || "+91 98765 43210");
   const [userPhoto, setUserPhoto] = useState<string | null>(user.customPhotoUri || null);
   const [leaderImg, setLeaderImg] = useState<HTMLImageElement | null>(null);
@@ -254,7 +254,7 @@ export const PosterMakerScreen: React.FC<PosterMakerProps> = ({ user, templates 
 
   const shareToWhatsApp = () => {
     const text = encodeURIComponent(
-      `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n\n📲 आधिकारिक वेब पोर्टल से अपना पोस्टर बनाएं: https://github.com/RiturajTomarOrchha/AAPKA-VISHWAS`
+      `🚩 *आपका विश्वास • सदैव आपके साथ*\n\n"${headline}"\n\n— *${userName}* (${designation})\n📱 मो. ${mobile}\n\nनरेला विधानसभा (भोपाल)\n📲 आधिकारिक वेब पोर्टल: #AapkaVishwas #NarelaBhopal #BJPVikas`
     );
     const link = document.createElement('a');
     link.href = `https://api.whatsapp.com/send?text=${text}`;
